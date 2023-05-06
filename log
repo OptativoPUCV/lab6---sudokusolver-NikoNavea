@@ -14,3 +14,22 @@ Fri 05 May 2023 11:59:15 PM UTC:
  tests:  0|5
 total_score: 0/70
 ea29c50
+Sat 06 May 2023 12:12:31 AM UTC: 
+ sudoku.c | 34 ++++++----------------------------
+ 1 file changed, 6 insertions(+), 28 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:58:32: error: expected ‘;’ before ‘}’ token
+   58 |           n->sudo[i][j] = nuevo
+      |                                ^
+      |                                ;
+   59 |         }
+      |         ~                       
+sudoku.c:60:26: error: expected ‘;’ before ‘return’
+   60 |         n->sudo[i][j] = 0
+      |                          ^
+      |                          ;
+   61 |         return list;
+      |         ~~~~~~            
+Compilation failed
+86e0a0d
