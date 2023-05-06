@@ -49,7 +49,7 @@ int repetidosFila(int fila, Node *n){
   for(columna = 0 ; columna < 9 ; columna++){
     if(n->sudo[fila][columna] != 0){
       if(numFila[n->sudo[fila][columna]] == 1) return 0;
-      else numFila[n->sudo[fila][columna]] == 1;
+      else numFila[n->sudo[fila][columna]] = 1;
     }
   }
   return 1;
@@ -60,7 +60,7 @@ int repetidosColumna(int columna, Node* n){
   for(fila = 0 ; fila < 9 ; fila++){
     if(n->sudo[fila][columna] != 0){
       if(numColumna[n->sudo[fila][columna]] == 1) return 0;
-      else numColumna[n->sudo[fila][columna]] == 1;
+      else numColumna[n->sudo[fila][columna]] = 1;
     }
   }
   return 1;
