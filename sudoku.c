@@ -99,11 +99,12 @@ List* get_adj_nodes(Node* n){
       if(n->sudo[i][j] == 0){
         for(int nuevo = 1 ; nuevo < 10 ; nuevo++){
           n->sudo[i][j] = nuevo;
+          if(is_valid(n)){
+            Node* adj_node = copy(n);
+            pushBack(list, adj_node);
+          }
         }
-        if(is_valid(n)){
-          Node* adj_node = copy(n);
-          pushBack(list, adj_node);
-        }
+        
         
         n->sudo[i][j] = 0;
         return list;
