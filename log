@@ -39,3 +39,18 @@ Sat 06 May 2023 12:12:39 AM UTC:
  tests:  0|5
 total_score: 0/70
 a5ddd12
+Sat 06 May 2023 12:48:09 AM UTC: 
+ sudoku.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+In file included from test.c:5:
+sudoku.c: In function ‘repetidosFila’:
+sudoku.c:52:44: error: statement with no effect [-Werror=unused-value]
+   52 |       else numFila[n->sudo[fila][columna]] == 1;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+sudoku.c: In function ‘repetidosColumna’:
+sudoku.c:63:47: error: statement with no effect [-Werror=unused-value]
+   63 |       else numColumna[n->sudo[fila][columna]] == 1;
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+1acec76

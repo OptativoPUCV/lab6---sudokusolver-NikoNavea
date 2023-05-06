@@ -43,9 +43,52 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
+int repetidosFila(int fila, Node *n){
+  int numFila[10] = {0}, columna;
 
-    return 1;
+  for(columna = 0 ; columna < 9 ; columna++){
+    if(n->sudo[fila][columna] != 0){
+      if(numFila[n->sudo[fila][columna]] == 1) return 0;
+      else numFila[n->sudo[fila][columna]] == 1;
+    }
+  }
+  return 1;
+}
+int repetidosColumna(int columna, Node* n){
+  int numColumna[10] = {0}, fila;
+
+  for(fila = 0 ; fila < 9 ; fila++){
+    if(n->sudo[fila][columna] != 0){
+      if(numColumna[n->sudo[fila][columna]] == 1) return 0;
+      else numColumna[n->sudo[fila][columna]] == 1;
+    }
+  }
+  return 1;
+}
+
+int repetidosSubMatriz(int subMatriz, Node *n){
+  int aux[10] = {0}, p;
+
+  for(p = 0 ; p < 9 ; p++){
+    int i = 3 * (subMatriz/3)+(p/3);
+    int j = 3 * (subMatriz%3) + (p%3);
+
+    if(n->sudo[i][j] != 0){
+      if (aux[n->sudo[i][j]] == 1) return 0;
+      else aux[n->sudo[i][j]] = 1;
+    }
+    
+  }
+  return 1;
+}
+
+int is_valid(Node* n){
+  int i;
+  for(i = 0 ; i < 9 ; i++){
+    if(repetidosFila(i, n) == 0 || repetidosColumna(i, n) == 0 || repetidosSubMatriz(i, n) == 0) return 0;
+  }
+  
+  return 1;
 }
 
 
@@ -57,6 +100,11 @@ List* get_adj_nodes(Node* n){
         for(int nuevo = 1 ; nuevo < 10 ; nuevo++){
           n->sudo[i][j] = nuevo;
         }
+        if(is_valid(n)){
+          Node* adj_node = copy(n);
+          pushBack(list, adj_node);
+        }
+        
         n->sudo[i][j] = 0;
         return list;
       }
